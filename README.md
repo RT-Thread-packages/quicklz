@@ -25,7 +25,7 @@ QuickLZ号称是世界上速度最快的压缩库，速度可达到单核308 Mby
 
 
 ### 3.2 运行示例
-该示例为一个简单的的文件和压缩和解压的例程，需要依赖文件系统，用到的命令有两个` -c`和 `-d`， `-c`命令压缩一个文件到另一个文件，`-d`命令解压一个文件到另一个文件。   
+该示例为一个简单的文件压缩和解压的例程，需要依赖文件系统，用到的命令有两个` -c`和 `-d`， `-c`命令压缩一个文件到另一个文件，`-d`命令解压一个文件到另一个文件。   
 使用方式：msh cmd `qlz_test -c /file.bin /file.cmprs.bin` `qlz_test -d /file.cmprs.bin /file_dcmprs.bin`  
 
     msh />qlz_test -c /file.bin /file.cmprs.bin
@@ -34,7 +34,7 @@ QuickLZ号称是世界上速度最快的压缩库，速度可达到单核308 Mby
     msh />
     msh />qlz_test -d /file.cmprs.bin /file_dcmprs.bin
     [qlz]decompress start : >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-    decompressed 363495 bytes into 469848 bytes !
+    [qlz]decompressed 363495 bytes into 469848 bytes !
 
 ## 4、常见问题
 
