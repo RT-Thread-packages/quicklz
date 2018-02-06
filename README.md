@@ -10,15 +10,15 @@ QuickLZ号称是世界上速度最快的压缩库，速度可达到单核308 Mby
 `git clone https://github.com/RT-Thread-packages/quicklz.git`
 
 - env工具辅助下载：
-  menuconfig package path：`RT-Thread online package -> miscellaneous package -> QucikLZ`
+  menuconfig package path：`RT-Thread online package` -> `miscellaneous package` -> `QucikLZ`
 
 ## 3、示例介绍
 
 ### 3.1 获取示例
 
-menuconfig path：`RT-Thread online package/miscellaneous package/QucikLZ/Enable using quizklz sample`；  
-配置获取示例选项，配置包版本选为最新版`latest_version`；  
-配置压缩等级选项，配置为level 1（有三种等级 1/2/3，level 1 压缩速度最快，压缩比最小，level 3 压缩速度最快，压缩比最大）。  
+- 配置使能示例选项 `Enable using quizklz sample`;
+- 配置压缩等级选项，配置为level 1（有三种等级 1/2/3，level 1 压缩速度最快，压缩比最小，level 3 压缩速度最快，压缩比最大）;
+- 配置包版本选为最新版 `latest_version` .
 
 ![](./doc/image/QuickLZ.jpg)
 
