@@ -1,8 +1,11 @@
 from building import *
 
 cwd = GetCurrentDir()
-src = Glob('*.c')
+src = Glob('quicklz.c')
 CPPPATH = [cwd]
+
+if GetDepend('QLZ_USING_SAMPLE'):
+    src += ['quicklz_sample.c']
 
 group = DefineGroup('quicklz', src, depend = ['PKG_USING_QUICKLZ'], CPPPATH = CPPPATH)
 

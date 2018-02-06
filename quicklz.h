@@ -22,9 +22,9 @@
 
 // 1 gives fastest compression speed. 3 gives fastest decompression speed and best
 // compression ratio.
-//#define QLZ_COMPRESSION_LEVEL 1
+#define QLZ_COMPRESSION_LEVEL 1
 //#define QLZ_COMPRESSION_LEVEL 2
-#define QLZ_COMPRESSION_LEVEL 3
+//#define QLZ_COMPRESSION_LEVEL 3
 
 // If > 0, zero out both states prior to first call to qlz_compress() or qlz_decompress()
 // and decompress packets in the same order as they were compressed
@@ -40,6 +40,9 @@
 #define QLZ_VERSION_MAJOR 1
 #define QLZ_VERSION_MINOR 5
 #define QLZ_VERSION_REVISION 0
+
+// Buffer padding for destination buffer, least size + 400 bytes large because incompressible data may increase in size.
+#define QLZ_COMPRESS_BUFFER_PADDING    400
 
 // Using size_t, memset() and memcpy()
 #include <string.h>
