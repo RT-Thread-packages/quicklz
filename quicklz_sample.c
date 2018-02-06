@@ -221,7 +221,10 @@ int quicklz_test(int argc, char ** argv)
 
     if (argc != 4)
     {
-        rt_kprintf("[qlz] input argc : %d error , the correct input format sample(qlz_test -c(-d) /file.txt /file.d.txt)!\n", argc);
+        rt_kprintf("Usage:\n");
+        rt_kprintf("qlz_test -c [file] [cmprs_file]          -compress \"file\" to \"cmprs_file\" \n");
+        rt_kprintf("qlz_test -d [cmprs_file] [dcmprs_file]   -dcompress \"cmprs_file\" to \"dcmprs_file\" \n");
+        
         ret = -1;
         goto _exit;
     }
@@ -261,7 +264,10 @@ int quicklz_test(int argc, char ** argv)
     }
     else
     {
-        rt_kprintf("[qlz]The second parameter : %s is inputed incorrectly, the correct input is \"-c\" or \"-d\"!\n", argv[1]);
+        rt_kprintf("Usage:\n");
+        rt_kprintf("qlz_test -c [file] [cmprs_file]          -compress \"file\" to \"cmprs_file\" \n");
+        rt_kprintf("qlz_test -d [cmprs_file] [dcmprs_file]   -dcompress \"cmprs_file\" to \"dcmprs_file\" \n");
+        
         ret = -1;
         goto _exit;
     }
