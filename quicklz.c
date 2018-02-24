@@ -19,6 +19,17 @@
 #define X86X64
 #endif
 
+/*
+ * Use inlined functions for supported systems.
+ */
+#if defined(__GNUC__) || defined(__DMC__) || defined(__POCC__) || defined(__WATCOMC__) || defined(__SUNPRO_C)
+#define QUICKLZ_INLINE inline
+#elif defined(__BORLANDC__) || defined(_MSC_VER) || defined(__LCC__)
+#define QUICKLZ_INLINE __inline
+#else 
+#define QUICKLZ_INLINE
+#endif
+
 #define MINOFFSET 2
 #define UNCONDITIONAL_MATCHLEN 6
 #define UNCOMPRESSED_END 4
@@ -96,7 +107,7 @@ static void reset_table_decompress(qlz_state_decompress *state)
 #endif
 }
 
-static __inline ui32 hash_func(ui32 i)
+static QUICKLZ_INLINE ui32 hash_func(ui32 i)
 {
 #if QLZ_COMPRESSION_LEVEL == 2
     return ((i >> 9) ^ (i >> 13) ^ i) & (QLZ_HASH_VALUES - 1);
@@ -105,7 +116,7 @@ static __inline ui32 hash_func(ui32 i)
 #endif
 }
 
-static __inline ui32 fast_read(void const *src, ui32 bytes)
+static QUICKLZ_INLINE ui32 fast_read(void const *src, ui32 bytes)
 {
 #ifndef X86X64
     unsigned char *p = (unsigned char *)src;
@@ -129,7 +140,7 @@ static __inline ui32 fast_read(void const *src, ui32 bytes)
 #endif
 }
 
-static __inline ui32 hashat(const unsigned char *src)
+static QUICKLZ_INLINE ui32 hashat(const unsigned char *src)
 {
     ui32 fetch, hash;
     fetch = fast_read(src, 3);
@@ -137,7 +148,7 @@ static __inline ui32 hashat(const unsigned char *src)
     return hash;
 }
 
-static __inline void fast_write(ui32 f, void *dst, size_t bytes)
+static QUICKLZ_INLINE void fast_write(ui32 f, void *dst, size_t bytes)
 {
 #ifndef X86X64
     unsigned char *p = (unsigned char *)dst;
@@ -208,7 +219,7 @@ size_t qlz_size_header(const char *source)
 }
 
 
-static __inline void memcpy_up(unsigned char *dst, const unsigned char *src, ui32 n)
+static QUICKLZ_INLINE void memcpy_up(unsigned char *dst, const unsigned char *src, ui32 n)
 {
     // Caution if modifying memcpy_up! Overlap of dst and src must be special handled.
 #ifndef X86X64
@@ -230,7 +241,7 @@ static __inline void memcpy_up(unsigned char *dst, const unsigned char *src, ui3
 #endif
 }
 
-static __inline void update_hash(qlz_state_decompress *state, const unsigned char *s)
+static QUICKLZ_INLINE void update_hash(qlz_state_decompress *state, const unsigned char *s)
 {
 #if QLZ_COMPRESSION_LEVEL == 1
     ui32 hash;
