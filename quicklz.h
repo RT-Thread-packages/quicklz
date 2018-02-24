@@ -3,6 +3,15 @@
 
 #include <rtconfig.h>
 
+/* Compiler Related Definitions */
+#ifdef __CC_ARM                         /* ARM Compiler */
+#elif defined (__IAR_SYSTEMS_ICC__)     /* for IAR Compiler */
+#define __inline                       inline
+#elif defined (__GNUC__)                /* GNU GCC Compiler */
+#else
+    #error not supported tool chain
+#endif
+
 // Fast data compression library
 // Copyright (C) 2006-2011 Lasse Mikkel Reinhold
 // lar@quicklz.com
