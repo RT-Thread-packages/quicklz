@@ -55,7 +55,7 @@
 #define QLZ_VERSION_REVISION 0
 
 // Buffer padding for destination buffer, least size + 400 bytes large because incompressible data may increase in size.
-#define QLZ_COMPRESS_BUFFER_PADDING    400
+#define QLZ_BUFFER_PADDING    400
 
 // Using size_t, memset() and memcpy()
 #include <string.h>
