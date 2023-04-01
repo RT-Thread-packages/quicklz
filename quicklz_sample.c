@@ -32,7 +32,13 @@
 
 #include <rtthread.h>
 
-#include <dfs_posix.h>
+#if RT_VER_NUM >= 0x40100
+#include <dfs_file.h>
+#include <unistd.h>
+#include <sys/stat.h>
+#else
+#include <dfs_fs.h>
+#endif
 
 #include "quicklz.h"
 
