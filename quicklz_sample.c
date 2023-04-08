@@ -33,9 +33,10 @@
 #include <rtthread.h>
 
 #if RT_VER_NUM >= 0x40100
-#include <dfs_file.h>
-#include <unistd.h>
+#include <sys/types.h>
 #include <sys/stat.h>
+#include <fcntl.h>
+#include <unistd.h>
 #else
 #include <dfs_fs.h>
 #endif
